@@ -1,0 +1,57 @@
+Организовать вычисление выражений с использованием абстрактного синтаксического дерева. 
+Для этого описать необходимые структуры и функции, осуществляющие построение 
+абстрактного синтаксического дерева при разборе, а также его рекурсивных обход 
+и вычисление арифметического выражения. В качестве основы грамматики использовать 
+синтаксис арифметических выражений из лекции 3 (Слайд 9). При этом типы узлов 
+дерева разбора примут вид:
+%union {
+
+  struct ast *a;
+
+  double d;
+
+}
+
+Для реализации необходимо написать код для прототипов функций:
+
+/* build an AST */
+
+struct ast *newast(int nodetype, struct ast *l, struct ast *r);
+
+struct ast *newnum(double d);
+
+ 
+
+/* evaluate an AST */
+
+double eval(struct ast *);
+
+ 
+
+/* delete and free an AST */
+
+void treefree(struct ast *);
+
+Где структуры для указателей описаны как:
+
+/* nodes in the Abstract Syntax Tree */
+
+struct ast {
+
+  int nodetype;
+
+  struct ast *l;
+
+  struct ast *r;
+
+};
+
+ 
+
+struct numval {
+
+  int nodetype;     /* type K */
+
+  double number;
+
+};
