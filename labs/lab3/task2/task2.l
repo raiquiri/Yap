@@ -1,13 +1,12 @@
 %{
-    #include <stdio.h>
-    #include "y.tab.h"
+#include "y.tab.h"
 %}
 
 %%
 [0-9]+              {yylval=atoi(yytext);return NUMBER;}
-"+"                 return *yytext;
-"-"                 return *yytext;
-"="                 return *yytext;
+"+"                 return PLUS;
+"-"                 return MINUS;
+"\n"                return END;
 .                   {};
 %%
 

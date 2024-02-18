@@ -1,20 +1,28 @@
 %{
-    #include <stdio.h>
+#include <stdio.h>
+extern int yylex();
+extern int yyerror(const char *str);
 %}
 
-%token NUMBER
-%token PLUS MINUS MULTIPLY DEVIDE
+%token NUMBER 
+%token PLUS MINUS MULTIPLY DEVIDE 
+%token LEFTP RIGHTP
+%token END
 
 %left PLUS MINUS
 %left MULTIPLY DEVIDE
 
 %%
-exp:  NUMBER            {printf("%d ", $1);}
-    | '(' exp ')'       {}
-    | exp PLUS exp      {printf("+ ", $1);}
-    | exp MINUS exp     {printf("- ", $1);}
-    | exp MULTIPLY exp  {printf("* ", $1);}
-    | exp DEVIDE exp    {printf("/ ", $1);}
+program :
+        |program exp END    {printf("\nEnter expression: \n");}
+        ;
+
+exp : NUMBER            {printf("%d ", $1);}
+    | LEFTP exp RIGHTP  {}
+    | exp PLUS exp      {printf("+ ");}
+    | exp MINUS exp     {printf("- ");}
+    | exp MULTIPLY exp  {printf("* ");}
+    | exp DEVIDE exp    {printf("/ ");}
     ;
 %%
 
@@ -26,7 +34,7 @@ int main()
         return 0;
 } 
 
-void yyerror(const char *str)
+int yyerror(const char *str)
 {
         printf("Oшибка: %s\n",str);
         return 1;
