@@ -45,7 +45,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 2 "task4.y"
+#line 8 "task4.y"
 
         #define YYSTYPE double
     
@@ -61,12 +61,16 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    INTEGER = 258,                 /* INTEGER  */
-    FLOAT = 259,                   /* FLOAT  */
-    PLUS = 260,                    /* PLUS  */
-    MINUS = 261,                   /* MINUS  */
-    MULTIPLY = 262,                /* MULTIPLY  */
-    DEVIDE = 263                   /* DEVIDE  */
+    NUMBER = 258,                  /* NUMBER  */
+    INTEGER = 259,                 /* INTEGER  */
+    FLOAT = 260,                   /* FLOAT  */
+    PLUS = 261,                    /* PLUS  */
+    MINUS = 262,                   /* MINUS  */
+    MULTIPLY = 263,                /* MULTIPLY  */
+    DEVIDE = 264,                  /* DEVIDE  */
+    LEFTP = 265,                   /* LEFTP  */
+    RIGHTP = 266,                  /* RIGHTP  */
+    END = 267                      /* END  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -75,12 +79,16 @@ extern int yydebug;
 #define YYEOF 0
 #define YYerror 256
 #define YYUNDEF 257
-#define INTEGER 258
-#define FLOAT 259
-#define PLUS 260
-#define MINUS 261
-#define MULTIPLY 262
-#define DEVIDE 263
+#define NUMBER 258
+#define INTEGER 259
+#define FLOAT 260
+#define PLUS 261
+#define MINUS 262
+#define MULTIPLY 263
+#define DEVIDE 264
+#define LEFTP 265
+#define RIGHTP 266
+#define END 267
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

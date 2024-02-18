@@ -1,6 +1,5 @@
 %{
-    #include <stdio.h>
-    #include "y.tab.h"
+#include "y.tab.h"
 %}
 
 %%
@@ -10,9 +9,9 @@
 "-"                 return MINUS;
 "*"                 return MULTIPLY;
 "/"                 return DEVIDE;
-"("                 return *yytext;
-")"                 return *yytext;
-"="                 return *yytext;
+"("                 return LEFTP;
+")"                 return RIGHTP;
+"\n"                return END;
 .                   {};
 %%
 

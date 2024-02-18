@@ -1,39 +1,49 @@
+%{
+#include <stdio.h>
+extern int yylex();
+extern int yyerror(const char *str);
+%}
+
 %code requires
     {
         #define YYSTYPE double
     }
-%{
-    #include <stdio.h>
-%}
 
-%token INTEGER FLOAT
+%token NUMBER INTEGER FLOAT
 %token PLUS MINUS MULTIPLY DEVIDE
+%token LEFTP RIGHTP
+%token END
 
 %left PLUS MINUS
 %left MULTIPLY DEVIDE
 
 %%
-exp:  number            {}
-    | '(' exp ')'       {}
-    | exp PLUS exp      {printf("+ ", $1);}
-    | exp MINUS exp     {printf("- ", $1);}
-    | exp MULTIPLY exp  {printf("* ", $1);}
-    | exp DEVIDE exp    {printf("/ ", $1);}
+program :
+        |program exp END    {printf("\nEnter expression: \n");}
+        ;
+
+exp : number            
+    | LEFTP exp RIGHTP  {}
+    | exp PLUS exp      {printf("+ ");}
+    | exp MINUS exp     {printf("- ");}
+    | exp MULTIPLY exp  {printf("* ");}
+    | exp DEVIDE exp    {printf("/ ");}
     ;
 
-number: INTEGER         {printf("%d ", $1);}
-    |   FLOAT           {printf("%f ", $1);}
-    ;
+number  : INTEGER         {printf("%d ", $1);}
+        | FLOAT           {printf("%f ", $1);}
+        ;
 %%
 
   
 int main()
 {
+        printf("Enter expression: ");
         yyparse();
-        return 1;
+        return 0;
 } 
 
-void yyerror(const char *str)
+int yyerror(const char *str)
 {
         printf("Oшибка: %s\n",str);
         return 1;
