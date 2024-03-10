@@ -1,0 +1,8 @@
+// Symbol table
+// Symbol Name       Page Address
+// ----------------  ------------
+// WARNING           3000
+// LOOP_IO           3003
+// PRINT             300A
+// STRING            300D
+// IO                3049

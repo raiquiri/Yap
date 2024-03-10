@@ -1,0 +1,19 @@
+// Symbol table
+// Symbol Name       Page Address
+// ----------------  ------------
+// WARNING           3000
+// INP               3003
+// SORTOUT           300D
+// SORTIN            3015
+// SKIP              301C
+// SWAP              3023
+// LOAD              3029
+// SHOW              302C
+// STOP              3033
+// HS                3034
+// STRING            307A
+// CNTR              30DE
+// NCNTR             30DF
+// LINE              30E0
+// ZERO              30E1
+// PZERO             30E2
